@@ -42,4 +42,28 @@ export class StudentService{
 
     }
 
+    update(data: createStudentDto, id:number){
+        return this.userRepository.save({...data, id: Number(id)})
+        /**
+         * repository.update(id, data)  ==> respon status maping affected
+                "generatedMaps": [],
+                "raw": [],
+                "affected": 1
+         * repository.save({...data, id: Number(id)}) => response 
+                "firstName": "Gugun2",
+                "lastName": "Hermawan sudibjo",
+                "isActive": true,
+                "id": 8
+         */
+    }
+
+    remove(id: number){
+        return this.userRepository.delete(id)
+        /**
+         * response 
+            "raw": [],
+            "affected": 1
+         */
+    }
+
 }
